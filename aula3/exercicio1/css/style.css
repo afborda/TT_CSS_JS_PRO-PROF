@@ -119,9 +119,6 @@ body {
 .box4 {
   background: #00396b;
 }
-.box5 {
-  background: #fff;
-}
 
 .text {
   margin-top: 45%;
@@ -138,4 +135,8 @@ body {
 
 .box4 .text {
   color: #fff;
+}
+
+.box5:not(.box1, .box2, .box3, .box4) {
+  background: #fff;
 }
