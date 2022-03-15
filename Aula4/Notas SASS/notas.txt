@@ -1,0 +1,16 @@
+Sass é um pré processador de CSS
+
+O que ele faz?
+Adicionar capacidade de uma linguagem de programação
+
+Instalar o Appscout
+https://scout-app.io/
+
+Criar pasta 
+
+> css e scss
+
+Para o Scss iguinorar o arquivo deve se adicionar uma parchaus(_) 
+na frente do arquivo
+e importar esse arquivo dentro do scss principal
+
