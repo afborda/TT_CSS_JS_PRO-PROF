@@ -6,7 +6,22 @@ $cor-bg: #fff;
 $cor-texto: #333;
 $cor-link: #000;
 $cor-link-hover: #000;
-$cor-primaria: #e5e5e5;
+$cor-primaria: #c4c4c4;
+
+@if $tema == light {
+  $cor-bg: #fff;
+  $cor-texto: #333;
+  $cor-link: #000;
+  $cor-link-hover: #000;
+  $cor-primaria: #c4c4c4;
+}
+else {
+  $cor-bg: #000;
+  $cor-texto: #fff;
+  $cor-link: #fff;
+  $cor-link-hover: #fff;
+  $cor-primaria: #c4c4c4;
+}
 
 @mixin device($size-device) {
   @if $size-device == mobile {
@@ -26,6 +41,11 @@ $cor-primaria: #e5e5e5;
 
 @mixin border-radius($size-radius) {
   border-radius: $size-radius;
+}
+
+@mixin video {
+  width: 100%;
+  height: 100%;
 }
 
 body,
@@ -72,6 +92,11 @@ main {
   background: $cor-primaria;
   min-width: 650px;
   height: 400px;
+
+  .video-principal-iframe {
+    @include video;
+    @include border-radius(4px);
+  }
   @include border-radius(5px);
   @include device(mobile) {
     min-width: 95%;
@@ -108,6 +133,15 @@ main {
   }
   .mini-video {
     background: gold;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .mini-video-secundario {
+      @include video;
+      @include border-radius(4px);
+    }
     @include border-radius(5px);
     @include device(mobile) {
       width: 50%;
@@ -119,6 +153,11 @@ main {
   }
   .descricao-video {
     display: none;
+    h1 {
+      font-size: 16px;
+      font-weight: bold;
+      color: $cor-texto;
+    }
     @include device(mobile) {
       display: flex;
       flex-direction: column;
