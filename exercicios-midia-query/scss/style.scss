@@ -1,0 +1,129 @@
+@import 'reset';
+
+$tema: light;
+
+$cor-bg: #fff;
+$cor-texto: #333;
+$cor-link: #000;
+$cor-link-hover: #000;
+$cor-primaria: #e5e5e5;
+
+@mixin device($size-device) {
+  @if $size-device == mobile {
+    @media (min-width: 0px) and (max-width: 450px) {
+      @content;
+    }
+  } @else if $size-device == tablet {
+    @media (min-width: 379px) and (max-width: 601px) {
+      @content;
+    }
+  } @else if $size-device == web {
+    @media (min-width: 602px) {
+      @content;
+    }
+  }
+}
+
+@mixin border-radius($size-radius) {
+  border-radius: $size-radius;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $cor-texto;
+}
+
+header {
+  background: $cor-primaria;
+  padding: 35px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  .main-video {
+    width: 1024px;
+    height: 100%;
+    padding: 50px 40px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include device(mobile) {
+      width: 100%;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.video-principal {
+  background: $cor-primaria;
+  min-width: 650px;
+  height: 400px;
+  @include border-radius(5px);
+  @include device(mobile) {
+    min-width: 95%;
+    height: 300px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+.videos-secundarios {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @include border-radius(5px);
+  @include device(mobile) {
+    width: 100%;
+  }
+}
+
+.conteudo-secundario {
+  display: flex;
+  justify-content: space-between;
+
+  width: 250px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 15px 15px 15px;
+  @include device(mobile) {
+    width: 100%;
+    height: 150px;
+  }
+  .mini-video {
+    background: gold;
+    @include border-radius(5px);
+    @include device(mobile) {
+      width: 50%;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .descricao-video {
+    display: none;
+    @include device(mobile) {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      width: 40%;
+    }
+  }
+}

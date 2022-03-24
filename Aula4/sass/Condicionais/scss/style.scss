@@ -1,0 +1,155 @@
+$tema: dark;
+
+$cor-primaria: #ffb92f;
+$cor-base: #fff;
+$cor-fundo: #fff;
+$cor-texto: #001f3a;
+$font-primaria: monospace;
+$gutter: 30px;
+$cor-botao: #005c91;
+
+@if $tema == light {
+  $cor-primaria: #ffb92f;
+  $cor-botao: #005c91;
+  $cor-fundo: #fff;
+  $cor-texto: #001f3a;
+} @else if $tema == dark {
+  $cor-primaria: #ffb92f;
+  $cor-botao: #005c91;
+  $cor-fundo: #001f3a;
+  $cor-texto: #fff;
+}
+
+@mixin type-1($size: 16) {
+  font-family: monospace;
+  font-weight: normal;
+
+  @if $size==16 {
+    font-size: 1em;
+  } @else if $size == 18 {
+    font-size: 1.25em;
+  } @else if $size == 24 {
+    font-size: 1.5em;
+  } @else if $size == 64 {
+    font-size: 4em;
+  }
+}
+
+@mixin device($size-device) {
+  @if $size-device == mobile {
+    @media (min-width: 0px) and (max-width: 378px) {
+      @content;
+    }
+  } @else if $size-device == tablet {
+    @media (min-width: 379px) and (max-width: 601px) {
+      @content;
+    }
+  } @else if $size-device == web {
+    @media (min-width: 602px) {
+      @content;
+    }
+  }
+}
+
+@mixin border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; //prefixos
+  -webkit-box-sizing: border-box; //prefixos
+}
+
+@mixin title-large {
+  font-size: 4em;
+  line-height: 1;
+}
+
+@mixin title {
+  font-weight: bold;
+  font-family: $font-primaria;
+  color: $cor-primaria;
+}
+
+@mixin text-large {
+  @include title;
+  @include title-large;
+}
+
+@mixin separador($color: blue, $largura: 100px) {
+  &::after {
+    content: '';
+    display: block;
+    width: $largura;
+    height: 4px;
+    background: $color;
+  }
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  @include device(mobile) {
+    background-color: red;
+  }
+
+  @include device(tablet) {
+    background-color: greenyellow;
+  }
+
+  @include device(web) {
+    background-color: gold;
+  }
+
+  background-color: $cor-fundo;
+}
+
+section {
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  @include border-box;
+}
+
+h1 {
+  @include text-large;
+  @include separador($cor-primaria, 150px);
+}
+
+.modal {
+  //adicionado .modal
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: $cor-primaria;
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    font-family: $font-primaria;
+    max-width: 120px;
+  }
+
+  p {
+    color: $cor-texto;
+    margin-bottom: $gutter;
+    @include type-1(24);
+  }
+}
+
+ul {
+  text-align: center;
+  li {
+    display: inline-block;
+    list-style: none;
+    a {
+      display: block;
+      padding: 20px;
+      text-decoration: none;
+      background: $cor-botao;
+      color: #fff;
+      &:hover {
+        // & server para grudar o elemento no outro  exemplo &:hover === a:hover
+        background: pink;
+      }
+    }
+  }
+}
